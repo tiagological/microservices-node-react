@@ -3,9 +3,9 @@ import axios from 'axios';
 export default ({ req }) => {
   if (typeof window === 'undefined') {
     return axios.create({
-      // Does not match url used in course, see below link for more info
+      // Might not match url used in course based on dev env, see below link for more info
       // https://www.udemy.com/course/microservices-with-node-js-and-react/learn/lecture/19122264#questions/10323992
-      baseURL: 'http://172.17.0.4',
+      baseURL: 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
       headers: req.headers,
     });
   } else {
